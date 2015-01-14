@@ -2,6 +2,7 @@ var request = require('supertest');
 var express = require('express');
 var expect = require('chai').expect;
 var app = require('../server-config.js');
+// require('mocha');
 
 var db = require('../app/config');
 var User = require('../app/models/user');
