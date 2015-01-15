@@ -81,6 +81,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'git push azure master'
       }
     },
   });
@@ -136,12 +137,19 @@ module.exports = function(grunt) {
   });
 
   // add your deploy tasks here
-  grunt.registerTask('deploy', [
-    'test',
-    'jshint',
-    'build',
-    'nodemon'
-  ]);
+  grunt.registerTask('deploy',  function(n) {
+    if(grunt.option('prod')) {
+      console.log("i'm doing a prod");
+      grunt.task.run(['shell']);
+    } else {
+      grunt.task.run([
+        'test',
+        'jshint',
+        'build',
+        'nodemon'
+      ]);
+    }
+  });
 
 
 };
