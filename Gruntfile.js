@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
-        src: ['public/**/*.js'],
+        src: ['public/client/*.js'],
         dest: 'public/dist/productionPublic.js',
       },
     },
@@ -36,15 +36,16 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-        '*.js',
-        '/**/*.js'
+        './*.js',
+        './*/*.js'
       ],
       options: {
-        force: 'true',
+        // force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
-          'public/dist/**/*.js'
+          'public/dist/**/*.js',
+          'node_modules/*'
         ]
       }
     },
@@ -111,6 +112,10 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
 
+  // grunt.registerTask('default', [
+  //   'jshint',
+  //   'build'
+  // ]);
 
   grunt.registerTask('test', [
     'mochaTest'
@@ -130,8 +135,12 @@ module.exports = function(grunt) {
     }
   });
 
+  // add your deploy tasks here
   grunt.registerTask('deploy', [
-    // add your deploy tasks here
+    'test',
+    'jshint',
+    'build',
+    'nodemon'
   ]);
 
 
