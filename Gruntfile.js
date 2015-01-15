@@ -143,7 +143,7 @@ module.exports = function(grunt) {
       grunt.task.run(['shell']);
     } else {
       grunt.task.run([
-        'test',
+        /*'test',*/
         'jshint',
         'build',
         'nodemon'

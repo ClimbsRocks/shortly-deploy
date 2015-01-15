@@ -1,6 +1,15 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://55.55.55.5/mongo')
+/*
+- boot up mongo server on command line
+- connect our code to that server
+- define the schema for tables
+- attempt to insert record into new db tables
+- modify our models and collections(?) to handle this new database (strictly relational vs. non-relational?)
+- check through views / rest of app to see if anything else needs to be adjusted
+ */
+
+var db = mongoose.connect('mongodb://127.0.0.1:27017/test')
 
 // var Bookshelf = require('bookshelf');
 // var path = require('path');
@@ -46,4 +55,4 @@ mongoose.connect('mongodb://55.55.55.5/mongo')
 //   }
 // });
 
-// module.exports = db;
+module.exports = db;
